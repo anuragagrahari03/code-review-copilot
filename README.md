@@ -44,7 +44,7 @@ python -m unittest discover -s tests
 Install and run Ollama separately, then pull a code-capable model:
 
 ```bash
-ollama pull qwen2.5-coder:3b
+ollama pull stable-code
 ```
 
 Run the reviewer:
@@ -52,10 +52,10 @@ Run the reviewer:
 ```bash
 PYTHONPATH=src python -m code_review_copilot review \
   --provider ollama \
-  --model qwen2.5-coder:3b
+  --model stable-code
 ```
 
-For a MacBook Air M1 with 8 GB RAM, start with `qwen2.5-coder:3b`. See
+For a MacBook Air M1 with 8 GB RAM, start with `stable-code`. See
 [Local Model Setup](docs/local-model-setup.md) for installation, customization,
 and the future fine-tuning path.
 

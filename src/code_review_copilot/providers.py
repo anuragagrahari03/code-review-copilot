@@ -49,7 +49,7 @@ class MockProvider:
 
 @dataclass(frozen=True)
 class OllamaProvider:
-    model: str = "qwen2.5-coder:3b"
+    model: str = "stable-code"
     api_base: str = "http://localhost:11434"
 
     def complete(self, prompt: str) -> str:
@@ -104,7 +104,7 @@ def create_provider(config: ReviewConfig) -> ModelProvider:
 
     if config.provider == "ollama":
         return OllamaProvider(
-            model=config.model or "qwen2.5-coder:3b",
+            model=config.model or "stable-code",
             api_base=config.api_base or "http://localhost:11434",
         )
 

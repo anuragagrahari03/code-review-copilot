@@ -7,18 +7,26 @@ This guide is tuned for a MacBook Air M1 with 8 GB unified memory.
 Start with:
 
 ```bash
-qwen2.5-coder:3b
+stable-code
 ```
 
 Why this model:
 
+- it is from Stability AI
 - it is code-specific
-- it has a 32K context window in Ollama
-- the model download is about 1.9 GB
-- it is much more comfortable on 8 GB RAM than a 7B model
+- it has an instruct variant, which helps with code review prompts
+- it has a 16K context window in Ollama
+- the model download is about 1.6 GB
+- it is comfortable on an 8 GB MacBook Air
 
-You can later try `qwen2.5-coder:7b`, but close memory-heavy apps first. Avoid
-14B, 32B, and larger models on this laptop.
+Good alternatives:
+
+- `llama3.2:3b`: from Meta, better general instruction following, not code-specific
+- `starcoder2:3b`: from BigCode, code-specific and transparently trained
+- `phi3:mini`: from Microsoft, small and good at reasoning, not code-specific
+
+Avoid 7B, 12B, 14B, and larger models on this laptop until the basic workflow is
+working smoothly.
 
 ## Step 1: Install Ollama
 
@@ -45,13 +53,13 @@ Our Python app talks to that local server.
 ## Step 2: Download the Model
 
 ```bash
-ollama pull qwen2.5-coder:3b
+ollama pull stable-code
 ```
 
 Test it directly:
 
 ```bash
-ollama run qwen2.5-coder:3b
+ollama run stable-code
 ```
 
 Ask:
@@ -73,7 +81,7 @@ From the project root:
 ```bash
 PYTHONPATH=src python -m code_review_copilot review \
   --provider ollama \
-  --model qwen2.5-coder:3b
+  --model stable-code
 ```
 
 If you created staged changes and want to review only those:
@@ -81,7 +89,7 @@ If you created staged changes and want to review only those:
 ```bash
 PYTHONPATH=src python -m code_review_copilot review \
   --provider ollama \
-  --model qwen2.5-coder:3b \
+  --model stable-code \
   --target staged
 ```
 
@@ -148,6 +156,9 @@ quantity at this stage.
 ## Sources
 
 - Ollama macOS docs: https://docs.ollama.com/macos
-- Ollama Qwen2.5-Coder model page: https://ollama.com/library/qwen2.5-coder
+- Ollama Stable Code model page: https://ollama.com/library/stable-code
+- Ollama Llama 3.2 model page: https://ollama.com/library/llama3.2
+- Ollama StarCoder2 model page: https://ollama.com/library/starcoder2
+- Ollama Phi-3 model page: https://ollama.com/library/phi3
 - Ollama Modelfile docs: https://docs.ollama.com/modelfile
 - MLX-LM LoRA docs: https://github.com/ml-explore/mlx-lm/blob/main/mlx_lm/LORA.md

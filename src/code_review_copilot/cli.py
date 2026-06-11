@@ -38,7 +38,7 @@ def build_parser() -> argparse.ArgumentParser:
     review.add_argument(
         "--model",
         default=None,
-        help="Model name. Example: qwen2.5-coder:3b or gpt-4.1-mini.",
+        help="Model name. Example: stable-code or gpt-4.1-mini.",
     )
     review.add_argument(
         "--api-base",
